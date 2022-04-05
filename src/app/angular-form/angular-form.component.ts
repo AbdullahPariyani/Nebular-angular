@@ -4,16 +4,16 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { HttpService } from '../http.service';
 
 @Component({
-  selector: 'app-angular-form',
-  templateUrl: './angular-form.component.html',
-  styleUrls: ['./angular-form.component.scss']
+	selector: 'app-angular-form',
+	templateUrl: './angular-form.component.html',
+	styleUrls: ['./angular-form.component.scss']
 })
 export class AngularFormComponent {
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
+	form = new FormGroup({});
+	model: any = {};
+	options: FormlyFormOptions = {};
 
-  fields: FormlyFieldConfig[] = [
+	fields: FormlyFieldConfig[] = [
 		{
 			fieldGroupClassName: 'row',
 			fieldGroup: [
@@ -201,19 +201,20 @@ export class AngularFormComponent {
 			},
 		},
 	];
-  isFormLoad = false;
+	isFormLoad: boolean = false;
 
-  constructor(
-    private httpService: HttpService
-  ) {
-    this.httpService.httpGet('getFormData').subscribe(data => {
-      this.isFormLoad = true;
-      this.fields = data;
-      console.log(data);
-    });
-  }
+	constructor(
+		private httpService: HttpService
+	) {
+		this.isFormLoad = true;
+		this.httpService.httpGet('getFormData').subscribe(data => {
+			this.isFormLoad = true;
+			this.fields = data;
+			console.log(data);
+		});
+	}
 
-  submit() {
-    alert(JSON.stringify(this.model));
-  }
+	submit() {
+		alert(JSON.stringify(this.model));
+	}
 }

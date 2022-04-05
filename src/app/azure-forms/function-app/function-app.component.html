@@ -1,0 +1,88 @@
+<h4>Create Function App</h4>
+<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger">
+	<nb-card-body>
+		<h5>Instance Details</h5>
+		<hr />
+		<label>Function App name<span class="danger"> *</span></label>
+		<input type="text" fullWidth nbInput placeholder="Function App name">
+
+		<label class="mt-4">Publish<span class="danger"> *</span></label>
+		<nb-radio-group [(value)]="selectedPublish">
+			<nb-radio value="code">Code</nb-radio>
+			<nb-radio value="docker">Docker Container</nb-radio>
+		</nb-radio-group>
+
+		<label class="mt-4">Runtime stack<span class="danger"> *</span></label>
+		<nb-select fullWidth placeholder="Select Runtime stack" [(selected)]="selectedRuntimeItem">
+			<nb-option value="">Option empty</nb-option>
+			<nb-option value="0">Option 0</nb-option>
+			<nb-option value="1">Option 1</nb-option>
+			<nb-option value="2">Option 2</nb-option>
+			<nb-option value="3">Option 3</nb-option>
+			<nb-option value="4">Option 4</nb-option>
+		</nb-select>
+
+		<div *ngIf="selectedPublish =='code'">
+			<label class="mt-4">Version<span class="danger"> *</span></label>
+			<nb-select fullWidth placeholder="Select Version" [(selected)]="selectedRuntimeItem">
+				<nb-option value="">Option empty</nb-option>
+				<nb-option value="0">Option 0</nb-option>
+				<nb-option value="1">Option 1</nb-option>
+				<nb-option value="2">Option 2</nb-option>
+				<nb-option value="3">Option 3</nb-option>
+				<nb-option value="4">Option 4</nb-option>
+			</nb-select>
+
+			<label class="mt-4">Region<span class="danger"> *</span></label>
+			<nb-select fullWidth placeholder="Select Region" [(selected)]="selectedRuntimeItem">
+				<nb-option value="">Option empty</nb-option>
+				<nb-option value="0">Option 0</nb-option>
+				<nb-option value="1">Option 1</nb-option>
+				<nb-option value="2">Option 2</nb-option>
+				<nb-option value="3">Option 3</nb-option>
+				<nb-option value="4">Option 4</nb-option>
+			</nb-select>
+
+		</div>
+
+		<label class="mt-4">Operating System<span class="danger"> *</span></label>
+		<nb-radio-group>
+			<nb-radio value="linux">Linux</nb-radio>
+			<nb-radio value="windows">Windows</nb-radio>
+		</nb-radio-group>
+
+		<label class="mt-4">Plan type<span class="danger"> *</span></label>
+		<nb-select fullWidth placeholder="Select Region" [(selected)]="selectedRuntimeItem">
+			<nb-option value="">Option empty</nb-option>
+			<nb-option value="0">Option 0</nb-option>
+			<nb-option value="1">Option 1</nb-option>
+			<nb-option value="2">Option 2</nb-option>
+		</nb-select>
+
+		<label class="mt-4">Linux Plan (Australia Central)<span class="danger"> *</span></label>
+		<nb-select fullWidth placeholder="Select Region" [(selected)]="selectedRuntimeItem">
+			<nb-option value="">Option empty</nb-option>
+			<nb-option value="0">Option 0</nb-option>
+			<nb-option value="1">Option 1</nb-option>
+			<nb-option value="2">Option 2</nb-option>
+		</nb-select>
+
+		<label class="mt-4">Enable Application Insights<span class="danger"> *</span></label>
+		<nb-radio-group [(value)]="selectedApplicationInsights">
+			<nb-radio value="no">No</nb-radio>
+			<nb-radio value="yes">Yes</nb-radio>
+		</nb-radio-group>
+
+		<div *ngIf="selectedApplicationInsights == 'yes'">
+			<label class="mt-4">Application Insights<span class="danger"> *</span></label>
+			<nb-select fullWidth placeholder="Select Region" [(selected)]="selectedRuntimeItem">
+				<nb-option value="">Option empty</nb-option>
+				<nb-option value="0">Option 0</nb-option>
+				<nb-option value="1">Option 1</nb-option>
+				<nb-option value="2">Option 2</nb-option>
+			</nb-select>
+		</div>
+
+		<button nbButton outline status="primary" class="mt-4">Submit</button>
+	</nb-card-body>
+</nb-card>

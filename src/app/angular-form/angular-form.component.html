@@ -1,0 +1,9 @@
+<nb-card [nbSpinner]="!isFormLoad" nbSpinnerStatus="danger">
+	<nb-card-body>
+		<form [formGroup]="form" (ngSubmit)="submit()">
+			<formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+			<button type="submit" *ngIf="isFormLoad" class="btn btn-primary submit-button"
+				[disabled]="!form.valid">Submit</button>
+		</form>
+	</nb-card-body>
+</nb-card>

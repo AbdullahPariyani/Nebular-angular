@@ -1,4 +1,6 @@
-<nb-card [nbSpinner]="!isFormLoad" nbSpinnerStatus="danger">
+<app-header></app-header>
+<nb-card nbSpinnerStatus="danger" [ngClass]="httpService.isToggled ? 'is-not-toggled': 'is-toggled'">
+	<nb-card-header>Demo Form</nb-card-header>
 	<nb-card-body>
 		<form [formGroup]="form" (ngSubmit)="submit()">
 			<formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
@@ -6,4 +8,5 @@
 				[disabled]="!form.valid">Submit</button>
 		</form>
 	</nb-card-body>
+	<nb-card-footer>Footer</nb-card-footer>
 </nb-card>

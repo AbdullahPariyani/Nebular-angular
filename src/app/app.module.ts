@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule, NbSpinnerModule, NbInputModule, NbRadioModule, NbSelectModule, NbButtonModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AngularFormComponent } from './angular-form/angular-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { CommonModule } from '@angular/common';
@@ -44,6 +44,7 @@ import { FunctionAppComponent } from './azure-forms/function-app/function-app.co
     NbSelectModule,
     ReactiveFormsModule,
     FormlyBootstrapModule,
+    FormsModule,
     NbInputModule,
     FormlyModule.forRoot(),
     HttpClientModule,

@@ -5,6 +5,11 @@
       (click)="toggle()">
     </nb-icon>
     <div class="text-right">
+      <select class="mr-2" style="border: 1px solid lightblue;" placeholder="Select Runtime stack"
+        name="reactive-forms-group" [(ngModel)]="selectedTheme" (change)="changeTheme($event)">
+        <option disabled="true" selected>Select</option>
+        <option [value]="runT.value" *ngFor="let runT of themeOptions">{{runT.text}}</option>
+      </select>
       <nb-user name="Nikita Poltoratsky" title="full-stack developer" [nbContextMenu]="menuItems"
         nbContextMenuTag="my-context-menu">
       </nb-user>

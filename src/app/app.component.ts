@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbMenuItem, NbMenuService, NbSidebarService } from '@nebular/theme';
+import { NbMenuItem, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -10,13 +10,32 @@ import { filter, map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'my-new-project';
   isToggled: boolean = false;
+  selectedTheme = 'default';
   menuItems = [
     { title: 'Profile' },
     { title: 'Logout' },
   ];
 
-  constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService) {
+  themeOptions = [{
+    value: 'dark',
+    text: 'Dark'
+  }, {
+    value: 'default',
+    text: 'Light'
+  }, {
+    value: 'cosmic',
+    text: 'Cosmic'
+  }, {
+    value: 'corporate',
+    text: 'Corporate'
+  }];
 
+  constructor(
+    private sidebarService: NbSidebarService,
+    private nbMenuService: NbMenuService,
+    private themeService: NbThemeService
+  ) {
+    this.themeService.changeTheme('corporate');
   }
 
   ngOnInit() {
@@ -26,6 +45,10 @@ export class AppComponent implements OnInit {
         map(({ item: { title } }) => title),
       )
       .subscribe(title => { });
+  }
+
+  changeTheme(event: any) {
+    this.themeService.changeTheme(this.selectedTheme);
   }
 
   items: NbMenuItem[] = [

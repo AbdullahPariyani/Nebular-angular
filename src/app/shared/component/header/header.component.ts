@@ -10,7 +10,7 @@ import { HttpService } from '../../../http.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'my-new-project';
-  selectedTheme = 'default';
+  selectedTheme = 'dark';
   menuItems = [
     { title: 'Profile' },
     { title: 'Logout' },
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     public httpService: HttpService,
     private themeService: NbThemeService
   ) {
-    this.themeService.changeTheme('corporate');
+    this.themeService.changeTheme(this.selectedTheme);
   }
 
   ngOnInit() {

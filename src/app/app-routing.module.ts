@@ -10,18 +10,22 @@ import {
 } from '@nebular/auth';
 import { AngularFormComponent } from './angular-form/angular-form.component';
 import { FunctionAppComponent } from './azure-forms/function-app/function-app.component';
+import { AuthGuard } from './auth-guard.service';
 
 export const routes: Routes = [
   {
     path: '',
+    // canActivate: [AuthGuard],
     component: FunctionAppComponent,
   },
   {
     path: 'functional-app',
+    // canActivate: [AuthGuard],
     component: FunctionAppComponent,
   },
   {
     path: 'demo-form',
+    // canActivate: [AuthGuard],
     component: AngularFormComponent
   },
   {

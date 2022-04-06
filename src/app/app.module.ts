@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 import { FunctionAppComponent } from './azure-forms/function-app/function-app.component';
 import { HeaderComponent } from './shared/component/header/header.component';
-
+import { AuthGuard } from './auth-guard.service';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -82,7 +82,7 @@ import { HeaderComponent } from './shared/component/header/header.component';
       forms: {},
     }), 
   ],
-  providers: [HttpService],
+  providers: [HttpService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

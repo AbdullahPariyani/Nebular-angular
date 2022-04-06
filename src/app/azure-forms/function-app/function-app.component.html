@@ -1,5 +1,7 @@
+<app-header></app-header>
 <h4>Create Function App</h4>
-<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger">
+<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger"
+	[ngClass]="httpService.isToggled ? 'is-not-toggled': 'is-toggled'">
 	<nb-card-body>
 		<form [formGroup]="form" (ngSubmit)="onSubmit()">
 			<formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>

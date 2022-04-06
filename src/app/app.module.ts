@@ -16,13 +16,15 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 import { FunctionAppComponent } from './azure-forms/function-app/function-app.component';
+import { HeaderComponent } from './shared/component/header/header.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     AngularFormComponent,
-    FunctionAppComponent
+    FunctionAppComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

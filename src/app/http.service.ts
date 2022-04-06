@@ -9,6 +9,7 @@ const httpOptions: any = {
 @Injectable()
 export class HttpService {
 	apiEndPoint: string;
+	isToggled: boolean = false;
 
 	constructor(public httpClient: HttpClient) {
 		this.apiEndPoint = environment.apiEndPoint;

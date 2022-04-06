@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { HttpService } from '../../http.service';
 
 @Component({
   selector: 'app-function-app',
@@ -208,7 +209,7 @@ export class FunctionAppComponent implements OnInit {
       },
     }];
 
-  constructor() { }
+  constructor(public httpService: HttpService) { }
 
   ngOnInit(): void {
   }

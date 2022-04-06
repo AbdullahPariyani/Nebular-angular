@@ -31,6 +31,7 @@ export class FunctionAppComponent implements OnInit {
       templateOptions: {
         type: 'radio',
         label: 'Publish',
+        placeholder: 'Select publish',
         required: true,
         name: 'publish',
         options: [
@@ -45,6 +46,7 @@ export class FunctionAppComponent implements OnInit {
       hideExpression: 'model.publish == "docker"',
       templateOptions: {
         required: true,
+        placeholder: 'Select Runtime Stack',
         label: 'Runtime stack ',
         options: [
           {
@@ -85,6 +87,7 @@ export class FunctionAppComponent implements OnInit {
       templateOptions: {
         required: true,
         label: 'Version',
+        placeholder: 'Select Version',
         options: [
           {
             value: 'Version1',
@@ -102,6 +105,7 @@ export class FunctionAppComponent implements OnInit {
       type: 'select',
       templateOptions: {
         required: true,
+        placeholder: 'Select Region',
         label: 'Region',
         options: [
           {
@@ -123,6 +127,7 @@ export class FunctionAppComponent implements OnInit {
         label: 'Platform',
         required: true,
         name: 'platform',
+        placeholder: 'Select Platform',
         options: [
           { value: 'Linux', key: 'linux' },
           { value: 'Windows', key: 'windows' },
@@ -134,6 +139,7 @@ export class FunctionAppComponent implements OnInit {
       type: 'select',
       templateOptions: {
         required: true,
+        placeholder: 'Select Plan type',
         label: 'Plan Type',
         options: [
           {
@@ -151,6 +157,7 @@ export class FunctionAppComponent implements OnInit {
       key: 'linuxType',
       type: 'select',
       templateOptions: {
+        placeholder: 'Select Linux type',
         required: true,
         label: 'Linux Plan (Australia Central)',
         options: [
@@ -173,6 +180,7 @@ export class FunctionAppComponent implements OnInit {
         label: 'Enable Application Insights',
         required: true,
         name: 'applicationInsights',
+        defaultValue: 'no',
         options: [
           { value: 'No', key: 'no' },
           { value: 'Yes', key: 'yes' },
@@ -186,6 +194,7 @@ export class FunctionAppComponent implements OnInit {
       templateOptions: {
         required: true,
         label: 'Application Insight',
+        placeholder: 'Select Application Insight',
         options: [
           {
             value: 'Free',
@@ -201,7 +210,8 @@ export class FunctionAppComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 
   onSubmit() {

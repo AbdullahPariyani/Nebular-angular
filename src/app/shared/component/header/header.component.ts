@@ -10,7 +10,7 @@ import { HttpService } from '../../../http.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'my-new-project';
-  selectedTheme = 'default';
+  selectedTheme = 'dark';
   menuItems = [
     { title: 'Profile' },
     { title: 'Logout' },
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     public httpService: HttpService,
     private themeService: NbThemeService
   ) {
-    this.themeService.changeTheme('corporate');
+    this.themeService.changeTheme(this.selectedTheme);
   }
 
   ngOnInit() {
@@ -56,26 +56,30 @@ export class HeaderComponent implements OnInit {
     {
       title: 'Demo From',
       icon: 'bar-chart-outline',
-      link: 'demo-form'
+      link: '/demo-form'
+    }, {
+      title: 'Functional App',
+      icon: 'cloud-upload-outline',
+      link: '/functional-app'
     }, {
       title: 'Login',
       icon: 'person-outline',
-      link: 'auth/login'
+      link: '/auth/login'
     },
     {
       title: 'Register',
       icon: 'person-add-outline',
-      link: 'auth/register'
+      link: '/auth/register'
     },
     {
       title: 'Forgot',
       icon: { icon: 'checkmark-outline', pack: 'eva' },
-      link: 'auth/forgot'
+      link: '/auth/forgot'
     },
     {
       title: 'Logout',
       icon: 'unlock-outline',
-      link: 'auth/logout'
+      link: '/auth/logout'
     },
   ];
 

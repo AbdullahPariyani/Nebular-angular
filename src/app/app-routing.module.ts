@@ -17,6 +17,10 @@ export const routes: Routes = [
     component: FunctionAppComponent,
   },
   {
+    path: 'functional-app',
+    component: FunctionAppComponent,
+  },
+  {
     path: 'demo-form',
     component: AngularFormComponent
   },

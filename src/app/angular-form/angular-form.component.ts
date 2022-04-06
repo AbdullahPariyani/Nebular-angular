@@ -337,7 +337,7 @@ export class AngularFormComponent {
 	isFormLoad: boolean = false;
 
 	constructor(
-		private httpService: HttpService
+		public httpService: HttpService
 	) {
 		this.isFormLoad = true;
 		this.httpService.httpGet('getFormData').subscribe(data => {

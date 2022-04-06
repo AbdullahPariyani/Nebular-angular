@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'app-function-app',
@@ -9,55 +10,204 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FunctionAppComponent implements OnInit {
   isFormLoad: boolean = false;
 
-  selectedPublish: any = 'code';
-  selectedRuntimeItem = '2';
-  selectedApplicationInsights = 'no';
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
 
-  formData!: FormGroup;
-  languageText: string = '';
-  languages: any = [];
+  fields: FormlyFieldConfig[] = [
+    {
+      type: 'input',
+      key: 'appName',
+      templateOptions: {
+        label: 'Function App Name',
+        placeholder: 'Function App Name',
+        required: true,
+        maxLength: 30,
+      },
+    },
+    {
+      key: 'publish',
+      type: 'radio',
+      templateOptions: {
+        type: 'radio',
+        label: 'Publish',
+        required: true,
+        name: 'publish',
+        options: [
+          { value: 'Code', key: 'code', checked: true },
+          { value: 'Docker', key: 'docker' },
+        ],
+      },
+    },
+    {
+      key: 'runTimeStack',
+      type: 'select',
+      hideExpression: 'model.publish == "docker"',
+      templateOptions: {
+        required: true,
+        label: 'Runtime stack ',
+        options: [
+          {
+            value: 'NET',
+            label: '.NET',
+          },
+          {
+            value: 'node',
+            label: 'Node.js',
+          },
+          {
+            value: 'Python',
+            label: 'Python',
+          },
+          {
+            value: 'Java',
+            label: 'Java',
+          },
+          {
+            value: 'PHP',
+            label: 'PHP',
+          },
+          {
+            value: 'PowershellCore',
+            label: 'Powershell Core',
+          },
+          {
+            value: 'CustomHandler',
+            label: 'Custom Handler',
+          },
+        ],
+      },
+    },
+    {
+      key: 'version',
+      type: 'select',
+      hideExpression: 'model.publish == "docker"',
+      templateOptions: {
+        required: true,
+        label: 'Version',
+        options: [
+          {
+            value: 'Version1',
+            label: 'version 1',
+          },
+          {
+            value: 'Version2',
+            label: 'version 2',
+          },
+        ],
+      },
+    },
+    {
+      key: 'region',
+      type: 'select',
+      templateOptions: {
+        required: true,
+        label: 'Region',
+        options: [
+          {
+            value: 'India',
+            label: 'india',
+          },
+          {
+            value: 'Japan',
+            label: 'Japan',
+          },
+        ],
+      },
+    },
+    {
+      key: 'platform',
+      type: 'radio',
+      templateOptions: {
+        type: 'radio',
+        label: 'Platform',
+        required: true,
+        name: 'platform',
+        options: [
+          { value: 'Linux', key: 'linux' },
+          { value: 'Windows', key: 'windows' },
+        ],
+      },
+    },
+    {
+      key: 'planType',
+      type: 'select',
+      templateOptions: {
+        required: true,
+        label: 'Plan Type',
+        options: [
+          {
+            value: 'Free',
+            label: 'Free',
+          },
+          {
+            value: 'Paid',
+            label: 'Paid',
+          },
+        ],
+      },
+    },
+    {
+      key: 'linuxType',
+      type: 'select',
+      templateOptions: {
+        required: true,
+        label: 'Linux Plan (Australia Central)',
+        options: [
+          {
+            value: 'Free',
+            label: 'Free',
+          },
+          {
+            value: 'Paid',
+            label: 'Paid',
+          },
+        ],
+      },
+    },
+    {
+      key: 'applicationInsights',
+      type: 'radio',
+      templateOptions: {
+        type: 'radio',
+        label: 'Enable Application Insights',
+        required: true,
+        name: 'applicationInsights',
+        options: [
+          { value: 'No', key: 'no' },
+          { value: 'Yes', key: 'yes' },
+        ],
+      },
+    },
+    {
+      key: 'applicationInsightsSelect',
+      type: 'select',
+      hideExpression: 'model.applicationInsights == "no"',
+      templateOptions: {
+        required: true,
+        label: 'Application Insight',
+        options: [
+          {
+            value: 'Free',
+            label: 'Free',
+          },
+          {
+            value: 'Paid',
+            label: 'Paid',
+          },
+        ],
+      },
+    }];
 
-  runTimeStackOptions = [{
-    value: 'NET',
-    text: '.NET'
-  }, {
-    value: 'node',
-    text: 'Node.js'
-  }, {
-    value: 'Python',
-    text: 'Python'
-  }, {
-    value: 'Java',
-    text: 'Java'
-  }, {
-    value: 'PHP',
-    text: 'PHP'
-  }, {
-    value: 'PowershellCore',
-    text: 'Powershell Core'
-  }, {
-    value: 'CustomHandler',
-    text: 'Custom Handler'
-  }];
+  constructor() { }
 
-  constructor(private fb: FormBuilder) { }
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
-    this.buildForm();
-  }
-
-  private buildForm() {
-    this.formData = this.fb.group({
-      appName: ['', [Validators.required, Validators.maxLength(20)]],
-      publisher: ['code', [Validators.required]],
-      runTimeStack: ['', [Validators.required]],
-    });
-  }
 
   onSubmit() {
-    console.log(this.formData);
-    if (!this.formData.valid) {
-      this.formData.markAllAsTouched();
+    console.log(this.form);
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
     }
   }
 

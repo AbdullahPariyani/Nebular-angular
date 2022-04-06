@@ -200,6 +200,139 @@ export class AngularFormComponent {
 				],
 			},
 		},
+
+		{
+			type: 'input',
+			key: 'appName',
+			templateOptions: {
+				label: 'Function App Name',
+				placeholder: 'Function App Name',
+				required: true,
+				maxLength: 30,
+			},
+		},
+		{
+			key: 'publish',
+			type: 'radio',
+			templateOptions: {
+				type: 'radio',
+				label: 'Publish',
+				required: true,
+				name: 'publish',
+				options: [
+					{ value: 'Code', key: 'code' },
+					{ value: 'Docker', key: 'docker' },
+				],
+			},
+		},
+		{
+			key: 'runTimeStack',
+			type: 'select',
+			hideExpression: 'model.publish == "docker"',
+			templateOptions: {
+				required: true,
+				label: 'Runtime stack ',
+				options: [
+					{
+						value: 'NET',
+						label: '.NET',
+					},
+					{
+						value: 'node',
+						label: 'Node.js',
+					},
+					{
+						value: 'Python',
+						label: 'Python',
+					},
+					{
+						value: 'Java',
+						label: 'Java',
+					},
+					{
+						value: 'PHP',
+						label: 'PHP',
+					},
+					{
+						value: 'PowershellCore',
+						label: 'Powershell Core',
+					},
+					{
+						value: 'CustomHandler',
+						label: 'Custom Handler',
+					},
+				],
+			},
+		},
+		{
+			key: 'version',
+			type: 'select',
+			hideExpression: 'model.publish == "docker"',
+			templateOptions: {
+				required: true,
+				label: 'Version',
+				options: [
+					{
+						value: 'Version1',
+						label: 'version 1',
+					},
+					{
+						value: 'Version2',
+						label: 'version 2',
+					},
+				],
+			},
+		},
+		{
+			key: 'region',
+			type: 'select',
+			templateOptions: {
+				required: true,
+				label: 'Region',
+				options: [
+					{
+						value: 'India',
+						label: 'india',
+					},
+					{
+						value: 'Japan',
+						label: 'Japan',
+					},
+				],
+			},
+		},
+		{
+			key: 'platform',
+			type: 'radio',
+			templateOptions: {
+				type: 'radio',
+				label: 'Platform',
+				required: true,
+				name: 'platform',
+				options: [
+					{ value: 'Linux', key: 'linux' },
+					{ value: 'Windows', key: 'windows' },
+				],
+			},
+		},
+		{
+			key: 'planType',
+			type: 'select',
+			templateOptions: {
+				required: true,
+				label: 'Plan Type',
+				options: [
+					{
+						value: 'Free',
+						label: 'Free',
+					},
+					{
+						value: 'Paid',
+						label: 'Paid',
+					},
+				],
+			},
+		},
 	];
 	isFormLoad: boolean = false;
 

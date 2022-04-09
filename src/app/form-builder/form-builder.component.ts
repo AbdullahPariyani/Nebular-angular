@@ -14,10 +14,7 @@ export class FormBuilderComponent implements OnInit {
   isFormLoad: boolean = false;
   index: any = 0;
   formName = "Create Function App";
-
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
+  btnTitle = "Next";
 
   fields = [
     {
@@ -219,11 +216,7 @@ export class FormBuilderComponent implements OnInit {
     }];
 
   constructor(public httpService: HttpService, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
-      this.index = params['index'];
-      this.formName = params['name'];
-      this.fields = this.httpService.formData[this.index];
-    });
+    this.fields = this.httpService.formData[0];
   }
 
   ngOnInit(): void { }

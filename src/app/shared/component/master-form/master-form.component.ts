@@ -11,10 +11,11 @@ import { HttpService } from '../../utils/http.service';
 export class MasterFormComponent implements OnInit {
 
   @Input() isFormLoad: boolean = false;
-
   form = new FormGroup({});
+
   @Input() model: any = {};
-  @Input() formName: any = {};
+  @Input() formName: string = "";
+  @Input() btnTitle: string = "Submit";
   @Input() options: FormlyFormOptions = {};
   @Input() fields: FormlyFieldConfig[] = [];
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();

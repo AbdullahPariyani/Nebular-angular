@@ -1,8 +1,5 @@
 <nb-layout-header fixed>
-	<img src="/assets/logo.svg" class="mr-2" width="150px">
-	<nb-icon icon="menu-outline" [ngStyle]="{'transform': httpService.isToggled ? 'rotate(90deg)' : 'rotate(180deg)' }"
-		(click)="toggle()">
-	</nb-icon>
+	<img src="/assets/logo.svg" class="mr-2" width="175px">
 	<div class="text-right">
 		<select class="mr-2" style="border: 1px solid lightblue;" placeholder="Select Runtime stack"
 			name="reactive-forms-group" [(ngModel)]="selectedTheme" (change)="changeTheme($event)">
@@ -14,8 +11,3 @@
 		</nb-user>
 	</div>
 </nb-layout-header>
-
-<nb-sidebar fixed>
-	<nb-menu [items]="items">
-	</nb-menu>
-</nb-sidebar>

@@ -9,10 +9,18 @@ const httpOptions: any = {
 @Injectable()
 export class HttpService {
 	apiEndPoint: string;
-	isToggled: boolean = false;
 
 	formData = [
 		[{
+			type: 'input',
+			key: 'formName',
+			templateOptions: {
+				label: 'Function App Name',
+				placeholder: 'Function App Name',
+				required: false,
+				maxLength: 30,
+			},
+		}, {
 			type: 'input',
 			key: 'appName',
 			templateOptions: {

@@ -1,12 +1,11 @@
-<app-header></app-header>
-<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger"
-	[ngClass]="httpService.isToggled ? 'is-not-toggled': 'is-toggled'">
+<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger" class="'is-toggled">
 	<nb-card-header>{{formName}}</nb-card-header>
 	<nb-card-body>
 		<form [formGroup]="form">
 			<formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 		</form>
 	</nb-card-body>
-	<nb-card-footer><button type="submit" (click)="onSubmitForm()" class="btn btn-primary submit-button">Submit</button>
+	<nb-card-footer><button type="submit" (click)="onSubmitForm()"
+			class="btn btn-primary submit-button">{{btnTitle}}</button>
 	</nb-card-footer>
 </nb-card>

@@ -51,27 +51,4 @@ export class HeaderComponent implements OnInit {
   changeTheme(event: any) {
     this.themeService.changeTheme(this.selectedTheme);
   }
-
-  items = [{
-    title: 'Create Function App',
-    icon: 'unlock-outline',
-    queryParams: { name: 'Create Function App', index: 0 },
-    link: '/forms'
-  }, {
-    title: 'Create CosmosDB',
-    icon: 'unlock-outline',
-    queryParams: { name: 'Create CosmosDB', index: 1 },
-    link: '/forms'
-  }, {
-    title: 'Create SQL Database',
-    icon: 'unlock-outline',
-    queryParams: { name: 'Create SQL Database', index: 2 },
-    link: '/forms'
-  }];
-
-  toggle() {
-    this.httpService.isToggled = !this.httpService.isToggled;
-    this.sidebarService.toggle(true);
-    return false;
-  }
 }

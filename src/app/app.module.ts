@@ -12,7 +12,7 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { CommonModule } from '@angular/common';
 import { NebularFormlyModule } from 'ngx-nebular-formly';
 import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { AuthGuard } from './shared/utils/auth-guard.service';
 import { HttpService } from './shared/utils/http.service';
@@ -32,7 +32,17 @@ import { SharedModule } from './shared/utils/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'email',
+
+          alwaysFail: true,
+          delay: 1000,
+        }),
+      ],
+    }),
   ],
   providers: [HttpService, AuthGuard],
   bootstrap: [AppComponent]

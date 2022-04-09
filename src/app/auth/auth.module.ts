@@ -24,7 +24,6 @@ import { LoginComponent } from './login/login.component';
     NbButtonModule,
     NbCheckboxModule,
     AuthRoutingModule,
-
     NbAuthModule,
   ],
   declarations: [

@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NbAuthComponent } from '@nebular/auth';
 
 import { LoginComponent } from './login/login.component';
+import { NbRegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,10 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: NbRegisterComponent,
       },
     ],
   },

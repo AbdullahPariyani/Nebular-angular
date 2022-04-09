@@ -19,6 +19,7 @@ import { HttpService } from './shared/utils/http.service';
 import { MasterFormComponent } from './shared/component/master-form/master-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { SharedModule } from './shared/utils/shared.module';
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -30,6 +31,7 @@ import { SharedModule } from './shared/utils/shared.module';
   imports: [
     CommonModule,
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,

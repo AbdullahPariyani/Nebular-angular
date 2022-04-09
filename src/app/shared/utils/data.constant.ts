@@ -367,4 +367,60 @@ export const FORM_DATA = {
 			],
 		},
 	}],
+	REGISTRATION_FORM: [{
+		type: 'input',
+		key: 'companyName',
+		templateOptions: {
+			label: 'Company Name',
+			placeholder: 'Company Name',
+			required: true,
+			maxLength: 30,
+		},
+	}, {
+		type: 'input',
+		key: 'email',
+		templateOptions: {
+			label: 'Email',
+			placeholder: 'Email',
+			required: true,
+			maxLength: 155,
+		},
+	}, {
+		type: 'input',
+		key: 'password',
+		templateOptions: {
+			label: 'Password',
+			placeholder: 'Password',
+			required: true,
+			minLength: 8,
+		},
+	}, {
+		type: 'input',
+		key: 'confirm_password',
+		templateOptions: {
+			label: 'Confirm Password',
+			placeholder: 'Confirm Password',
+			required: true,
+			minLength: 8,
+		},
+	}, {
+		type: 'input',
+		key: 'contact',
+		templateOptions: {
+			label: 'Contact',
+			placeholder: 'Contact',
+			required: false,
+			minLength: 10,
+		},
+	}, {
+		type: 'input',
+		key: 'strength',
+		templateOptions: {
+			label: 'Company Strength',
+			placeholder: 'Company Strength',
+			required: false,
+			minLength: 50,
+		},
+	},
+	],
 }

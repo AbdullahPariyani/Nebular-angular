@@ -13,17 +13,17 @@ export const FORM_DATA = {
 				options: [
 					{ value: 'Azure', key: 'azure', },
 					{ value: 'AWS', key: 'aws', disabled: true },
-					{ value: 'Google Could Platform', key: 'gcp' },
+					{ value: 'Google Could Platform', key: 'gcp', disabled: true },
 				],
 			},
-
 		},
 		{
 			key: 'multiselect',
 			type: 'select',
 			templateOptions: {
-				label: 'Multi-select',
+				label: 'Resource Group',
 				multiple: true,
+				required: true,
 				options: [
 					{ label: 'Iron Man', value: 'iron_man' },
 					{ label: 'Captain America', value: 'captain_america' },
@@ -34,16 +34,18 @@ export const FORM_DATA = {
 			},
 		},
 		{
-			key: 'marvel2',
+			key: 'location',
 			type: 'select',
 			templateOptions: {
-				label: 'Grouped Select',
+				label: 'Select Location',
+				placeholder: "Select Location",
+				required: true,
 				options: [
-					{ label: 'Iron Man', value: 'iron_man', group: 'Male' },
-					{ label: 'Captain America', value: 'captain_america', group: 'Male' },
-					{ label: 'Black Widow', value: 'black_widow', group: 'Female' },
-					{ label: 'Hulk', value: 'hulk', group: 'Male' },
-					{ label: 'Captain Marvel', value: 'captain_marvel', group: 'Female' },
+					{ label: 'Iron Man', value: 'iron_man' },
+					{ label: 'Captain America', value: 'captain_america' },
+					{ label: 'Black Widow', value: 'black_widow' },
+					{ label: 'Hulk', value: 'hulk' },
+					{ label: 'Captain Marvel', value: 'captain_marvel' },
 				],
 			},
 		},
@@ -367,4 +369,11 @@ export const FORM_DATA = {
 			],
 		},
 	}],
+}
+
+export enum FORM_TYPE {
+	'FUNCTIONAL_FORM' = 'FUNCTIONAL_FORM',
+	'SQL_FORM' = 'SQL_FORM',
+	'CONSMO_FORM' = 'CONSMO_FORM',
+	'INIT_FORM' = 'INIT_FORM'
 }

@@ -18,6 +18,7 @@ export class MasterFormComponent implements OnInit {
   @Input() btnTitle: string = "Submit";
   @Input() options: FormlyFormOptions = {};
   @Input() fields: FormlyFieldConfig[] = [];
+  @Input() formType: string = '';
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
   constructor(public httpService: HttpService) { }
@@ -29,7 +30,7 @@ export class MasterFormComponent implements OnInit {
     if (!this.form.valid) {
       this.form.markAllAsTouched();
     }
-    this.onSubmit.emit(this.form);
+    this.onSubmit.emit({ form: this.form, formType: this.formType });
   }
 
 }

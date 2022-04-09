@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormlyFormOptions } from '@ngx-formly/core';
+import { FORM_DATA } from '../shared/utils/data.constant';
 import { HttpService } from '../shared/utils/http.service';
 
 @Component({
@@ -15,6 +16,11 @@ export class FormBuilderComponent implements OnInit {
   index: any = 0;
   formName = "Create Function App";
   btnTitle = "Next";
+
+  initForm = FORM_DATA.INIT_FORM;
+  functionForm = FORM_DATA.FUNCTIONAL_FORM;
+  sqlForm = FORM_DATA.SQL_FORM;
+  consmoForm = FORM_DATA.COSMOS_FORM;
 
   fields = [
     {

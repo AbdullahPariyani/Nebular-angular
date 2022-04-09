@@ -223,14 +223,13 @@ export class FormBuilderComponent implements OnInit {
       this.index = params['index'];
       this.formName = params['name'];
       this.fields = this.httpService.formData[this.index];
-      debugger
     });
   }
 
   ngOnInit(): void { }
 
-  onSubmit() {
-    console.log(this.form.value);
+  onSubmit(form: any) {
+    console.log(form.value);
   }
 
 }

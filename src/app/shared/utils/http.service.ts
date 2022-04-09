@@ -218,6 +218,15 @@ export class HttpService {
 				required: true,
 				maxLength: 30,
 			},
+		}, {
+			type: 'input',
+			key: 'appName',
+			templateOptions: {
+				label: 'Function App Name',
+				placeholder: 'Function App Name',
+				required: true,
+				maxLength: 30,
+			},
 		}],
 		[{
 			key: 'runTimeStack',

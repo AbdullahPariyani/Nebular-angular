@@ -25,6 +25,9 @@ export class MasterFormComponent implements OnInit {
   }
 
   onSubmitForm() {
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+    }
     this.onSubmit.emit(this.form);
   }
 

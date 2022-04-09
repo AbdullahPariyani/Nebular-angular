@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 import { filter, map } from 'rxjs/operators';
-import { HttpService } from '../../../http.service';
+import { HttpService } from '../../utils/http.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { HttpService } from '../../../http.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'my-new-project';
-  selectedTheme = 'dark';
+  selectedTheme = 'default';
   menuItems = [
     { title: 'Profile' },
     { title: 'Logout' },
@@ -52,36 +52,22 @@ export class HeaderComponent implements OnInit {
     this.themeService.changeTheme(this.selectedTheme);
   }
 
-  items: NbMenuItem[] = [
-    {
-      title: 'Demo From',
-      icon: 'bar-chart-outline',
-      link: '/demo-form'
-    }, {
-      title: 'Functional App',
-      icon: 'cloud-upload-outline',
-      link: '/functional-app'
-    }, {
-      title: 'Login',
-      icon: 'person-outline',
-      link: '/auth/login'
-    },
-    {
-      title: 'Register',
-      icon: 'person-add-outline',
-      link: '/auth/register'
-    },
-    {
-      title: 'Forgot',
-      icon: { icon: 'checkmark-outline', pack: 'eva' },
-      link: '/auth/forgot'
-    },
-    {
-      title: 'Logout',
-      icon: 'unlock-outline',
-      link: '/auth/logout'
-    },
-  ];
+  items = [{
+    title: 'Create Function App',
+    icon: 'unlock-outline',
+    queryParams: { name: 'Create Function App', index: 0 },
+    link: '/forms'
+  }, {
+    title: 'Create CosmosDB',
+    icon: 'unlock-outline',
+    queryParams: { name: 'Create CosmosDB', index: 1 },
+    link: '/forms'
+  }, {
+    title: 'Create SQL Database',
+    icon: 'unlock-outline',
+    queryParams: { name: 'Create SQL Database', index: 2 },
+    link: '/forms'
+  }];
 
   toggle() {
     this.httpService.isToggled = !this.httpService.isToggled;

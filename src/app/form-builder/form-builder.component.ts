@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { HttpService } from '../../http.service';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormlyFormOptions } from '@ngx-formly/core';
+import { HttpService } from '../shared/utils/http.service';
 
 @Component({
-  selector: 'app-function-app',
-  templateUrl: './function-app.component.html',
-  styleUrls: ['./function-app.component.scss']
+  selector: 'app-form-builder',
+  templateUrl: './form-builder.component.html',
+  styleUrls: ['./form-builder.component.scss']
 })
-export class FunctionAppComponent implements OnInit {
+export class FormBuilderComponent implements OnInit {
+
   isFormLoad: boolean = false;
+  index: any = 0;
+  formName = "Create Function App";
 
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
 
-  fields: FormlyFieldConfig[] = [
+  fields = [
     {
       type: 'input',
       key: 'appName',
@@ -31,6 +35,7 @@ export class FunctionAppComponent implements OnInit {
       type: 'radio',
       templateOptions: {
         type: 'radio',
+        "inline": true,
         label: 'Publish',
         placeholder: 'Select publish',
         required: true,
@@ -91,13 +96,16 @@ export class FunctionAppComponent implements OnInit {
         placeholder: 'Select Version',
         options: [
           {
-            value: 'Version1',
-            label: 'version 1',
+            value: '16LTS',
+            label: '16 LTS',
           },
           {
-            value: 'Version2',
-            label: 'version 2',
-          },
+            value: '14LTS',
+            label: '14 LTS',
+          }, {
+            value: '12LTS',
+            label: '12 LTS',
+          }
         ],
       },
     },
@@ -125,6 +133,7 @@ export class FunctionAppComponent implements OnInit {
       type: 'radio',
       templateOptions: {
         type: 'radio',
+        "inline": true,
         label: 'Platform',
         required: true,
         name: 'platform',
@@ -142,16 +151,16 @@ export class FunctionAppComponent implements OnInit {
         required: true,
         placeholder: 'Select Plan type',
         label: 'Plan Type',
-        options: [
-          {
-            value: 'Free',
-            label: 'Free',
-          },
-          {
-            value: 'Paid',
-            label: 'Paid',
-          },
-        ],
+        options: [{
+          value: 'FunctionsPremium',
+          label: 'Functions Premium',
+        }, {
+          value: 'AppServicePlan',
+          label: 'App service plan',
+        }, {
+          value: "Consumption",
+          label: "Consumption "
+        }],
       },
     },
     {
@@ -209,17 +218,19 @@ export class FunctionAppComponent implements OnInit {
       },
     }];
 
-  constructor(public httpService: HttpService) { }
-
-  ngOnInit(): void {
+  constructor(public httpService: HttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.index = params['index'];
+      this.formName = params['name'];
+      this.fields = this.httpService.formData[this.index];
+      debugger
+    });
   }
 
+  ngOnInit(): void { }
 
   onSubmit() {
-    console.log(this.form);
-    if (!this.form.valid) {
-      this.form.markAllAsTouched();
-    }
+    console.log(this.form.value);
   }
 
 }

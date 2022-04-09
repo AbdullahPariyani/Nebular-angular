@@ -6,25 +6,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbIconModule, NbContextMenuModule, NbUserModule, NbSpinnerModule, NbInputModule, NbRadioModule, NbSelectModule, NbButtonModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { AngularFormComponent } from './angular-form/angular-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { CommonModule } from '@angular/common';
 import { NebularFormlyModule } from 'ngx-nebular-formly';
-import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
-import { FunctionAppComponent } from './azure-forms/function-app/function-app.component';
 import { HeaderComponent } from './shared/component/header/header.component';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './shared/utils/auth-guard.service';
+import { HttpService } from './shared/utils/http.service';
+import { MasterFormComponent } from './shared/component/master-form/master-form.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
-    AngularFormComponent,
-    FunctionAppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MasterFormComponent,
+    FormBuilderComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +55,7 @@ import { AuthGuard } from './auth-guard.service';
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-         
+
           baseEndpoint: 'http://example.com/app-api/v1',
           login: {
             endpoint: '/auth/sign-in',
@@ -80,7 +80,7 @@ import { AuthGuard } from './auth-guard.service';
         }),
       ],
       forms: {},
-    }), 
+    }),
   ],
   providers: [HttpService, AuthGuard],
   bootstrap: [AppComponent]

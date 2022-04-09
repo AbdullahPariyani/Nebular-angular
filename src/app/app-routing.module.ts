@@ -8,25 +8,19 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { AngularFormComponent } from './angular-form/angular-form.component';
-import { FunctionAppComponent } from './azure-forms/function-app/function-app.component';
-import { AuthGuard } from './auth-guard.service';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { AuthGuard } from './shared/utils/auth-guard.service';
 
 export const routes: Routes = [
   {
     path: '',
     // canActivate: [AuthGuard],
-    component: FunctionAppComponent,
+    component: FormBuilderComponent,
   },
   {
-    path: 'functional-app',
+    path: 'forms',
     // canActivate: [AuthGuard],
-    component: FunctionAppComponent,
-  },
-  {
-    path: 'demo-form',
-    // canActivate: [AuthGuard],
-    component: AngularFormComponent
+    component: FormBuilderComponent,
   },
   {
     path: 'auth',

@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "firebase": "flowops-10-04-22",
+    "public": "dist/my-new-project",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

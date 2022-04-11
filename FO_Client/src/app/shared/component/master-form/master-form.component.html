@@ -1,0 +1,13 @@
+<nb-card [nbSpinner]="isFormLoad" nbSpinnerStatus="danger" class="'is-toggled">
+	<nb-card-header>{{formName}}</nb-card-header>
+	<nb-card-body>
+		<form [formGroup]="form">
+			<formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+		</form>
+	</nb-card-body>
+	<nb-card-footer>
+		<button type="submit" (click)="gotoPrevious()" class="btn btn-light mr-2"
+			*ngIf="formType !== formTypeArray.INIT_FORM ">Previous</button>
+		<button type="submit" (click)="onSubmitForm()" class="btn btn-primary submit-button">{{btnTitle}}</button>
+	</nb-card-footer>
+</nb-card>

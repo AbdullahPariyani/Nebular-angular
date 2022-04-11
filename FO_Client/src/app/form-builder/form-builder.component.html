@@ -1,0 +1,124 @@
+<app-header></app-header>
+<nb-card class="mt-75">
+	<nb-card-body>
+		<nb-stepper orientation="horizontal" #stepper>
+			<!-- 1. Init Form Start-->
+			<nb-step [label]="labelOne">
+				<ng-template #labelOne>Basic Details</ng-template>
+				<app-master-form [btnTitle]="'Next'" [fields]="initForm" (onSubmit)="onSubmit($event)" [formName]="'Init Form'"
+					[formType]="formType.INIT_FORM">
+				</app-master-form>
+			</nb-step>
+			<!-- Init Form End-->
+
+			<!-- 2. Functional Form Start-->
+			<nb-step label="Functional App" *ngIf="isStepAccessible(formType.FUNCTIONAL_FORM)">
+				<app-master-form [btnTitle]="'Next'" [fields]="functionForm" (onSubmit)="onSubmit($event)"
+					(previous)="previous()" [formType]="formType.FUNCTIONAL_FORM" [formName]="'Functional App'">
+				</app-master-form>
+			</nb-step>
+			<!-- Functional Form End-->
+
+			<!-- 3. CosmosDB Start -->
+			<nb-step label="Cosmos DB" *ngIf="isStepAccessible(formType.COSMOS_FORM)">
+				<app-master-form [btnTitle]="'Next'" [formType]="formType.COSMOS_FORM" [fields]="consmoForm"
+					(onSubmit)="onSubmit($event)" (previous)="previous()" [formName]="'Cosmos Database'">
+				</app-master-form>
+			</nb-step>
+			<!-- CosmosDB End -->
+
+			<!-- 4. SQL_Form Start -->
+			<nb-step label="SQL Database" *ngIf="isStepAccessible(formType.SQL_FORM)">
+				<app-master-form [btnTitle]="'Next'" [fields]="sqlForm" [formType]="formType.SQL_FORM"
+					(onSubmit)="onSubmit($event)" (previous)="previous()" [formName]="'SQL Database'">
+				</app-master-form>
+			</nb-step>
+			<!-- SQL_Form End -->
+
+			<!-- 5. STORAGE_ACCOUNT Start -->
+			<nb-step label="Storage Account" *ngIf="isStepAccessible(formType.STORAGE_ACCOUNT)">
+				<app-master-form [btnTitle]="'Next'" [fields]="storageAccount" [formType]="formType.STORAGE_ACCOUNT"
+					(onSubmit)="onSubmit($event)" (previous)="previous()" [formName]="'Storage Account Form'">
+				</app-master-form>
+			</nb-step>
+			<!-- SQL_Form End -->
+
+			<!-- 6. Review Start -->
+			<nb-step label="FINISH" *ngIf="functionFormValue || sqlFormValue || consmoFormValue || storageAccountValue">
+				<nb-card>
+					<nb-card-header>Review Data</nb-card-header>
+					<nb-card-body>
+						<nb-accordion>
+
+							<nb-accordion-item *ngIf="this.initFormValue">
+								<nb-accordion-item-header>
+									Basic Details
+								</nb-accordion-item-header>
+								<nb-accordion-item-body>
+									<div *ngFor="let item of initFormValue | keyvalue">
+										<b>{{item.key}}</b>: <span>{{item.value}}</span>
+										<hr />
+									</div>
+								</nb-accordion-item-body>
+							</nb-accordion-item>
+
+							<nb-accordion-item *ngIf="this.functionFormValue">
+								<nb-accordion-item-header>
+									Functional App
+								</nb-accordion-item-header>
+								<nb-accordion-item-body>
+									<div *ngFor="let item of functionFormValue | keyvalue">
+										<b>{{item.key}}</b>: <span>{{item.value}}</span>
+										<hr />
+									</div>
+								</nb-accordion-item-body>
+							</nb-accordion-item>
+
+							<nb-accordion-item *ngIf="this.sqlFormValue">
+								<nb-accordion-item-header>
+									SQL Database
+								</nb-accordion-item-header>
+								<nb-accordion-item-body>
+									<div *ngFor="let item of sqlFormValue | keyvalue">
+										<b>{{item.key}}</b>: <span>{{item.value}}</span>
+										<hr />
+									</div>
+								</nb-accordion-item-body>
+							</nb-accordion-item>
+
+							<nb-accordion-item *ngIf="this.consmoFormValue">
+								<nb-accordion-item-header>
+									Cosmos Database
+								</nb-accordion-item-header>
+								<nb-accordion-item-body>
+									<div *ngFor="let item of consmoFormValue | keyvalue">
+										<b>{{item.key}}</b>: <span>{{item.value}}</span>
+										<hr />
+									</div>
+								</nb-accordion-item-body>
+							</nb-accordion-item>
+
+							<nb-accordion-item *ngIf="this.storageAccountValue">
+								<nb-accordion-item-header>
+									Storage Account
+								</nb-accordion-item-header>
+								<nb-accordion-item-body>
+									<div *ngFor="let item of storageAccountValue | keyvalue">
+										<b>{{item.key}}</b>: <span>{{item.value}}</span>
+										<hr />
+									</div>
+								</nb-accordion-item-body>
+							</nb-accordion-item>
+
+						</nb-accordion>
+					</nb-card-body>
+					<nb-card-footer>
+						<button nbButton class="btn btn-primary" (click)="generateForm()">Generate Flow-Up</button>
+					</nb-card-footer>
+				</nb-card>
+			</nb-step>
+			<!-- Review End -->
+
+		</nb-stepper>
+	</nb-card-body>
+</nb-card>
